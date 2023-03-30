@@ -9,45 +9,40 @@ view: test2 {
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Ebita" in Explore.
+  # This dimension will be called "Budget" in Explore.
 
-  dimension: ebita {
+  dimension: budget {
     type: number
-    sql: ${TABLE}.EBITA ;;
-  }
-
-  dimension: npat {
-    type: number
-    sql: ${TABLE}.NPAT ;;
-  }
-
-  dimension: revenue {
-    type: number
-    sql: ${TABLE}.Revenue ;;
+    sql: ${TABLE}.Budget ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_revenue {
+  measure: total_budget {
     type: sum
-    sql: ${revenue} ;;
+    sql: ${budget} ;;
   }
 
-  measure: average_revenue {
+  measure: average_budget {
     type: average
-    sql: ${revenue} ;;
+    sql: ${budget} ;;
+  }
+
+  dimension: fy_2021 {
+    type: number
+    sql: ${TABLE}.FY_2021 ;;
+  }
+
+  dimension: fy_2022 {
+    type: number
+    sql: ${TABLE}.FY_2022 ;;
   }
 
   dimension: type {
     type: string
     sql: ${TABLE}.Type ;;
-  }
-
-  dimension: year {
-    type: number
-    sql: ${TABLE}.Year ;;
   }
 
   measure: count {
