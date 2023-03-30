@@ -25,12 +25,12 @@ persist_with: custom-el_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: twelve {}
+explore: test12 {}
 
-explore: fourteen {}
+explore: test14 {}
 
-explore: one {}
+explore: test1 {}
 
-explore: six {}
+explore: test6 {}
 
-explore: seven {}
+explore: test7 {}

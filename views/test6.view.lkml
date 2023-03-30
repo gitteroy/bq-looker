@@ -1,57 +1,47 @@
-# The name of this view in Looker is "One"
-view: one {
+# The name of this view in Looker is "Test6"
+view: test6 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `test.one`
+  sql_table_name: `shiok-381601.test.test6`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Barge Name" in Explore.
+  # This dimension will be called "Company" in Explore.
 
-  dimension: barge_name {
+  dimension: company {
     type: string
-    sql: ${TABLE}.Barge_Name ;;
+    sql: ${TABLE}.Company ;;
   }
 
-  dimension: capacity {
+  dimension: demand {
     type: number
-    sql: ${TABLE}.Capacity ;;
+    sql: ${TABLE}.Demand ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_capacity {
+  measure: total_demand {
     type: sum
-    sql: ${capacity} ;;
+    sql: ${demand} ;;
   }
 
-  measure: average_capacity {
+  measure: average_demand {
     type: average
-    sql: ${capacity} ;;
+    sql: ${demand} ;;
   }
 
-  dimension: capacity__group_stream_ {
-    type: number
-    sql: ${TABLE}.Capacity__Group_Stream_ ;;
-  }
-
-  dimension: group_name {
+  dimension: level {
     type: string
-    sql: ${TABLE}.Group_Name ;;
-  }
-
-  dimension: stream {
-    type: string
-    sql: ${TABLE}.Stream ;;
+    sql: ${TABLE}.Level ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [barge_name, group_name]
+    drill_fields: []
   }
 }

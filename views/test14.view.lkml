@@ -1,8 +1,8 @@
-# The name of this view in Looker is "Fourteen"
-view: fourteen {
+# The name of this view in Looker is "Test14"
+view: test14 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `test.fourteen`
+  sql_table_name: `shiok-381601.test.test14`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -21,7 +21,6 @@ view: fourteen {
 
   dimension_group: end {
     type: time
-    description: "%m/%d/%Y %H:%M:%E*S"
     timeframes: [
       raw,
       time,
@@ -65,7 +64,6 @@ view: fourteen {
 
   dimension_group: start {
     type: time
-    description: "%m/%d/%Y %H:%M:%E*S"
     timeframes: [
       raw,
       time,
