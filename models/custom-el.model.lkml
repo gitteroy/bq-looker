@@ -34,3 +34,17 @@ explore: test1 {}
 explore: test6 {}
 
 explore: test7 {}
+
+explore: test9 {}
+
+explore: test10 {}
+
+explore: test8 {}
+
+explore: test5 {}
+
+explore: test4 {}
+
+explore: test2 {}
+
+explore: test3 {}
