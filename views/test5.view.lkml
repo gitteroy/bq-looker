@@ -9,85 +9,35 @@ view: test5 {
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Apr" in Explore.
+  # This dimension will be called "Actual" in Explore.
 
-  dimension: apr {
+  dimension: actual {
     type: number
-    sql: ${TABLE}.Apr ;;
+    sql: ${TABLE}.Actual ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_apr {
+  measure: total_actual {
     type: sum
-    sql: ${apr} ;;
+    sql: ${actual} ;;
   }
 
-  measure: average_apr {
+  measure: average_actual {
     type: average
-    sql: ${apr} ;;
+    sql: ${actual} ;;
   }
 
-  dimension: aug {
+  dimension: cumulative {
     type: number
-    sql: ${TABLE}.Aug ;;
+    sql: ${TABLE}.Cumulative ;;
   }
 
-  dimension: dec {
-    type: number
-    sql: ${TABLE}.Dec ;;
-  }
-
-  dimension: feb {
-    type: number
-    sql: ${TABLE}.Feb ;;
-  }
-
-  dimension: jan {
-    type: number
-    sql: ${TABLE}.Jan ;;
-  }
-
-  dimension: jul {
-    type: number
-    sql: ${TABLE}.Jul ;;
-  }
-
-  dimension: jun {
-    type: number
-    sql: ${TABLE}.Jun ;;
-  }
-
-  dimension: mar {
-    type: number
-    sql: ${TABLE}.Mar ;;
-  }
-
-  dimension: may {
-    type: number
-    sql: ${TABLE}.May ;;
-  }
-
-  dimension: nov {
-    type: number
-    sql: ${TABLE}.Nov ;;
-  }
-
-  dimension: oct {
-    type: number
-    sql: ${TABLE}.Oct ;;
-  }
-
-  dimension: sep {
-    type: number
-    sql: ${TABLE}.Sep ;;
-  }
-
-  dimension: type {
+  dimension: month {
     type: string
-    sql: ${TABLE}.Type ;;
+    sql: ${TABLE}.Month ;;
   }
 
   measure: count {
