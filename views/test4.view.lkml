@@ -76,7 +76,7 @@ view: test4 {
 
   dimension: month_formatted {
     type: string
-    sql: "strftime('%b', parse_date('%b', ${TABLE}.Month))" ;;
+    sql: "FORMAT_DATE('%b', PARSE_DATE('%m', ${month}))" ;;
   }
 
   measure: count {
