@@ -40,6 +40,18 @@ view: test5 {
     sql: ${TABLE}.Month ;;
   }
 
+  dimension: month_formatted {
+    type: string
+    sql: FORMAT_DATE('%b', PARSE_DATE('%b', ${TABLE}.Month)) ;;
+    convert_tz: no
+  }
+
+  dimension: month_datetime {
+    type: date
+    sql: PARSE_DATE('%b', ${month_formatted}) ;;
+    convert_tz: no
+  }
+
   measure: count {
     type: count
     drill_fields: []
