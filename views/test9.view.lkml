@@ -31,8 +31,13 @@ view: test9 {
   }
 
   dimension: month {
-    type: string
+    type: number
     sql: ${TABLE}.Month ;;
+  }
+
+  dimension: month_str {
+    type: string
+    sql: ${TABLE}.Month_str ;;
   }
 
   dimension: on_time_delivery_monthly {
