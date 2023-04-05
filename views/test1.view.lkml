@@ -2,7 +2,7 @@
 view: test1 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `shiok-381601.test.test1`
+  sql_table_name: `connection-looker-382805.test.test1`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
