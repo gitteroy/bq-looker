@@ -9,40 +9,35 @@ view: test2 {
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Budget" in Explore.
+  # This dimension will be called "Amt" in Explore.
 
-  dimension: budget {
+  dimension: amt {
     type: number
-    sql: ${TABLE}.Budget ;;
+    sql: ${TABLE}.amt ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_budget {
+  measure: total_amt {
     type: sum
-    sql: ${budget} ;;
+    sql: ${amt} ;;
   }
 
-  measure: average_budget {
+  measure: average_amt {
     type: average
-    sql: ${budget} ;;
+    sql: ${amt} ;;
   }
 
-  dimension: fy_2021 {
-    type: number
-    sql: ${TABLE}.FY_2021 ;;
-  }
-
-  dimension: fy_2022 {
-    type: number
-    sql: ${TABLE}.FY_2022 ;;
-  }
-
-  dimension: type {
+  dimension: d1 {
     type: string
-    sql: ${TABLE}.Type ;;
+    sql: ${TABLE}.d1 ;;
+  }
+
+  dimension: d2 {
+    type: string
+    sql: ${TABLE}.d2 ;;
   }
 
   measure: count {
