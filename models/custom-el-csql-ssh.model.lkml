@@ -1,5 +1,5 @@
 # Define the database connection to be used for this model.
-connection: "custom-el-bq"
+connection: "custom-el-csql-ssh"
 
 # include all the views
 include: "/views/**/*.view"
@@ -25,17 +25,5 @@ persist_with: custom-el_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: test1 {}
-# explore: test12 {}
-# explore: test13 {}
-# explore: test6 {}
-# explore: test7 {}
-# explore: test9 {}
-# explore: test10 {}
-# explore: test8 {}
-# explore: test5 {}
-# explore: test4 {}
-# explore: test2 {}
-# explore: test3 {}
-# explore: test21 {}
-# explore: test82 {}
+explore: users {}
+explore: contacts {}
