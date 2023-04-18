@@ -1,57 +1,47 @@
-# The name of this view in Looker is "Test1"
-view: test1 {
+# The name of this view in Looker is "T4"
+view: t4 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `connection-looker-382805.test.test1`
+  sql_table_name: `lookerset.t4`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Barge Name" in Explore.
+  # This dimension will be called "Actual Core Earnings" in Explore.
 
-  dimension: barge_name {
-    type: string
-    sql: ${TABLE}.Barge_Name ;;
+  dimension: actual_core_earnings {
+    type: number
+    sql: ${TABLE}.Actual_Core_Earnings ;;
   }
 
-  dimension: capacity {
+  dimension: actual_revenue {
     type: number
-    sql: ${TABLE}.Capacity ;;
+    sql: ${TABLE}.Actual_Revenue ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_capacity {
+  measure: total_actual_revenue {
     type: sum
-    sql: ${capacity} ;;
+    sql: ${actual_revenue} ;;
   }
 
-  measure: average_capacity {
+  measure: average_actual_revenue {
     type: average
-    sql: ${capacity} ;;
+    sql: ${actual_revenue} ;;
   }
 
-  dimension: capacity__group_stream_ {
-    type: number
-    sql: ${TABLE}.Capacity__Group_Stream_ ;;
-  }
-
-  dimension: group_name {
+  dimension: month {
     type: string
-    sql: ${TABLE}.Group_Name ;;
-  }
-
-  dimension: stream {
-    type: string
-    sql: ${TABLE}.Stream ;;
+    sql: ${TABLE}.Month ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [barge_name, group_name]
+    drill_fields: []
   }
 }
