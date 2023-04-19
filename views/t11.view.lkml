@@ -54,4 +54,47 @@ view: t11 {
     type: count
     drill_fields: []
   }
+
+  dimension: to_city_lat {
+    type: number
+    sql: (
+      SELECT t112.lat
+      FROM elroy-demo.lookerset.t112 t112
+      WHERE t112.city = ${TABLE}.to_city
+    ) ;;
+  }
+  dimension: to_city_long {
+    type: number
+    sql: (
+      SELECT t112.long
+      FROM elroy-demo.lookerset.t112 t112
+      WHERE t112.city = ${TABLE}.to_city
+    ) ;;
+  }
+  dimension: from_city_lat {
+    type: number
+    sql: (
+      SELECT t112.lat
+      FROM elroy-demo.lookerset.t112 t112
+      WHERE t112.city = ${TABLE}.from_city
+    ) ;;
+  }
+  dimension: from_city_long {
+    type: number
+    sql: (
+      SELECT t112.long
+      FROM elroy-demo.lookerset.t112 t112
+      WHERE t112.city = ${TABLE}.from_city
+    ) ;;
+  }
+  dimension: to_location {
+    type: location
+    sql_latitude: ${to_city_lat} ;;
+    sql_longitude: ${to_city_long} ;;
+  }
+  dimension: from_location {
+    type: location
+    sql_latitude: ${from_city_lat} ;;
+    sql_longitude: ${from_city_long} ;;
+  }
 }

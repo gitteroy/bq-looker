@@ -49,4 +49,12 @@ explore: t8 {}
 
 explore: t9 {}
 
-explore: t11 {}
+explore: t11 {
+  join: t112 {
+    type: left_outer
+    sql_on: ${t11.from_city} = ${t112.city} OR ${t11.to_city} = ${t112.city} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: t112 {}
