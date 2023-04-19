@@ -1,15 +1,24 @@
 # The name of this view in Looker is "T4"
 view: t4 {
-  # The sql_table_name parameter indicates the underlying database table
-  # to be used for all fields in this view.
-  sql_table_name: `lookerset.t4`
-    ;;
-  # No primary key is defined for this view. In order to join this view in an Explore,
-  # define primary_key: yes on a dimension that has no repeated values.
+  derived_table: {
+    sql: SELECT
+           Month,
+           Actual_Core_Earnings,
+           Actual_Revenue,
+           AVG(Actual_Core_Earnings) OVER (ORDER BY Month ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS Cumulative_Avg_Core_Earnings,
+           AVG(Actual_Revenue) OVER (ORDER BY Month ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS Cumulative_Avg_Revenue
+         FROM lookerset.t4 ;;
+  }
 
-  # Here's what a typical dimension looks like in LookML.
-  # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Actual Core Earnings" in Explore.
+  dimension: cumulative_avg_core_earnings {
+    type: number
+    sql: ${TABLE}.Cumulative_Avg_Core_Earnings ;;
+  }
+
+  dimension: cumulative_avg_revenue {
+    type: number
+    sql: ${TABLE}.Cumulative_Avg_Revenue ;;
+  }
 
   dimension: actual_core_earnings {
     type: number
@@ -20,10 +29,6 @@ view: t4 {
     type: number
     sql: ${TABLE}.Actual_Revenue ;;
   }
-
-  # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
-  # measures for this dimension, but you can also add measures of many different aggregates.
-  # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: total_actual_revenue {
     type: sum
@@ -41,6 +46,7 @@ view: t4 {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }
