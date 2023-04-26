@@ -58,3 +58,7 @@ explore: t11 {
 }
 
 explore: t112 {}
+
+explore: t32 {}
+
+explore: t31 {}
