@@ -16,6 +16,11 @@ view: t1 {
     sql: ${TABLE}.Barge_Name ;;
   }
 
+  measure: barge_name_list {
+    type: list
+    list_field: barge_name
+  }
+
   dimension: capacity {
     type: number
     sql: ${TABLE}.Capacity ;;
@@ -28,6 +33,18 @@ view: t1 {
   measure: total_capacity {
     type: sum
     sql: ${capacity} ;;
+  }
+
+  measure: total_capacity_conditional {
+    type: sum
+    sql: ${capacity} ;;
+    value_format_name: usd
+    html: {% if value > 15000 %}
+          <p style="color: white; background-color: #FFC20A; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</p>
+          {% else %}
+          <p style="color: white; background-color: #6D7170; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</p>
+          {% endif %}
+          ;;
   }
 
   measure: average_capacity {
@@ -45,9 +62,26 @@ view: t1 {
     sql: ${TABLE}.Group_Name ;;
   }
 
+  dimension: group_name_coloured {
+    type: string
+    sql: ${TABLE}.Group_Name ;;
+    html: <p style="color: black; background-color: #afafaf; font-size:100%; text-align:center">{{ rendered_value }}</p> ;;
+  }
+
   dimension: stream {
     type: string
     sql: ${TABLE}.Stream ;;
+  }
+
+  dimension: stream_coloured {
+    type: string
+    sql: ${TABLE}.Stream ;;
+    html: {% if value == 'Upstream' %}
+          <p style="color: black; background-color: #fc1555; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% else %}
+          <p style="color: white; background-color: #6897bb; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</p>
+          {% endif %}
+          ;;
   }
 
   measure: count {
