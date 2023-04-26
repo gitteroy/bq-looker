@@ -30,20 +30,32 @@ view: t4 {
     sql: ${TABLE}.Actual_Revenue ;;
   }
 
+  dimension: month {
+    type: string
+    sql: ${TABLE}.Month ;;
+  }
+
   measure: total_actual_revenue {
     type: sum
     sql: ${actual_revenue} ;;
   }
 
-  measure: average_actual_revenue {
-    type: average
-    sql: ${actual_revenue} ;;
+  measure: total_actual_core_earnings {
+    type: sum
+    sql: ${actual_core_earnings} ;;
+    html: {{rendered_value}} | Calculate % HERE ;;
   }
 
-  dimension: month {
-    type: string
-    sql: ${TABLE}.Month ;;
+  measure: sum_cumulative_avg_core_earnings {
+    type: sum
+    sql: ${cumulative_avg_revenue} ;;
   }
+
+  measure: sum_cumulative_avg_revenue {
+    type: sum
+    sql: ${cumulative_avg_revenue} ;;
+  }
+
 
   measure: count {
     hidden: yes
