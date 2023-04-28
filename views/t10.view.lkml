@@ -25,19 +25,10 @@ view: t10 {
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_free_space {
-    type: sum
-    sql: ${free_space} ;;
-  }
-
-  measure: average_free_space {
-    type: average
-    sql: ${free_space} ;;
-  }
-
   dimension: server {
     type: string
     sql: ${TABLE}.Server ;;
+    html: {{rendered_value}} | {{company}} ;;
   }
 
   dimension: target {
@@ -53,5 +44,20 @@ view: t10 {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: total_free_space {
+    type: sum
+    sql: ${free_space} ;;
+  }
+
+  measure: total_usage {
+    type: sum
+    sql: ${usage} ;;
+  }
+
+  measure: total_target {
+    type: sum
+    sql: ${target} ;;
   }
 }
