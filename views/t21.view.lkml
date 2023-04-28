@@ -23,7 +23,7 @@ view: t21 {
   measure: total_amt {
     type: sum
     sql: ${amt} ;;
-    html: ${{ rendered_value }} | {{total_ytd._rendered_value }} YTD Change;;
+    html: ${{ rendered_value }} <br><br>YTD Change<br>{{total_ytd._rendered_value}};;
   }
 
   measure: average_amt {
@@ -51,6 +51,16 @@ view: t21 {
     type: sum
     value_format: "0.00%"
     sql: ${ytd} ;;
+  }
+
+  dimension: ytd_value {
+    type: number
+    sql: ${TABLE}.ytd * 100;;
+  }
+
+  measure: total_ytd_value {
+    type: sum
+    sql: ${ytd} * 100 ;;
   }
 
   measure: count {

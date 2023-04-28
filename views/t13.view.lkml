@@ -36,6 +36,7 @@ view: t13 {
   dimension: flight {
     type: string
     sql: ${TABLE}.Flight ;;
+    html: {{product_label}} | {{rendered_value}} ;;
   }
 
   dimension: product_label {

@@ -20,7 +20,7 @@ view: t7 {
   measure: total_np_liter_in_rupiah {
     type: sum
     sql: ${np_liter_in_rupiah} ;;
-    html: {{rendered_value}} | {{brand_and_model}} ;;
+    html: {{rendered_value}}<br><br>Details<br>{{brand_and_model}} ;;
   }
 
   measure: average_np_liter_in_rupiah {
