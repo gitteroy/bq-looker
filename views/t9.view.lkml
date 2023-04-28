@@ -14,7 +14,7 @@ view: t9 {
   dimension_group: month {
     type: time
     timeframes: [
-      month
+      month_name
     ]
     convert_tz: no
     datatype: date
@@ -39,18 +39,36 @@ view: t9 {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
+  # measure: total_delay_rate_monthly {
+  #   type: sum
+  #   value_format: "0.00%"
+  #   sql: ${delay_rate_monthly} * 100;;
+  # }
+
+  # measure: total_on_time_delivery_ytd {
+  #   type: sum
+  #   value_format: "0.00%"
+  #   sql: ${on_time_delivery_ytd} * 100;;
+  # }
+
+  # measure: total_time_delivery_monthly {
+  #   type: sum
+  #   value_format: "0.00%"
+  #   sql: ${on_time_delivery_monthly} * 100;;
+  # }
+
   measure: total_delay_rate_monthly {
     type: sum
-    sql: ${delay_rate_monthly} ;;
+    sql: ${delay_rate_monthly} * -1;;
   }
 
   measure: total_on_time_delivery_ytd {
     type: sum
-    sql: ${on_time_delivery_ytd} ;;
+    sql: ${on_time_delivery_ytd};;
   }
 
   measure: total_time_delivery_monthly {
     type: sum
-    sql: ${on_time_delivery_monthly} ;;
+    sql: ${on_time_delivery_monthly};;
   }
 }
