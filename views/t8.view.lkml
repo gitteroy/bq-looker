@@ -20,16 +20,6 @@ view: t8 {
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_month {
-    type: sum
-    sql: ${month} ;;
-  }
-
-  measure: average_month {
-    type: average
-    sql: ${month} ;;
-  }
-
   dimension: steaming_time {
     type: number
     sql: ${TABLE}.Steaming_Time ;;
@@ -50,7 +40,28 @@ view: t8 {
     sql: ${TABLE}.Waiting_to_Load ;;
   }
 
+  measure: sum_waiting_to_load {
+    type: sum
+    sql: ${waiting_to_load} ;;
+  }
+
+  measure: sum_steaming_time {
+    type: sum
+    sql: ${steaming_time} ;;
+  }
+
+  measure: sum_stoppages {
+    type: sum
+    sql: ${stoppages} ;;
+  }
+
+  measure: sum_waiting_to_discharge {
+    type: sum
+    sql: ${waiting_to_discharge} ;;
+  }
+
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }
