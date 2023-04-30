@@ -4,13 +4,8 @@ view: t5 {
   # to be used for all fields in this view.
   sql_table_name: `lookerset.t5`
     ;;
-  # No primary key is defined for this view. In order to join this view in an Explore,
-  # define primary_key: yes on a dimension that has no repeated values.
 
-  # Here's what a typical dimension looks like in LookML.
-  # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Actual" in Explore.
-  dimension_group: month_date {
+  dimension_group: month {
     type: time
     timeframes: [
       month_name,
@@ -18,12 +13,17 @@ view: t5 {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.Month ;;
+    sql: ${TABLE}.Month_date ;;
   }
 
   dimension: actual {
     type: number
     sql: ${TABLE}.Actual ;;
+  }
+
+  dimension: cumulative {
+    type: number
+    sql: ${TABLE}.Cumulative ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
@@ -35,18 +35,9 @@ view: t5 {
     sql: ${actual} ;;
   }
 
-  measure: average_actual {
-    type: average
-    sql: ${actual} ;;
+  measure: total_cumulative {
+    type: sum
+    sql: ${cumulative} ;;
   }
 
-  dimension: cumulative {
-    type: number
-    sql: ${TABLE}.Cumulative ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }
