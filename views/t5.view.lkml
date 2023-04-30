@@ -10,6 +10,16 @@ view: t5 {
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Actual" in Explore.
+  dimension_group: month_date {
+    type: time
+    timeframes: [
+      month_name,
+      month_num
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.Month ;;
+  }
 
   dimension: actual {
     type: number
@@ -33,11 +43,6 @@ view: t5 {
   dimension: cumulative {
     type: number
     sql: ${TABLE}.Cumulative ;;
-  }
-
-  dimension: month {
-    type: string
-    sql: ${TABLE}.Month ;;
   }
 
   measure: count {
