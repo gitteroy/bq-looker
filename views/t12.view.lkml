@@ -16,6 +16,23 @@ view: t12 {
     sql: ${TABLE}.Breakdown ;;
   }
 
+  dimension: breakdown_sorted {
+    type: string
+    sql:  CASE ${breakdown}
+          WHEN 'Revenue' THEN '1 Revenue'
+          WHEN 'Fixed Cost' THEN '2 Fixed Cost'
+          WHEN 'Variable Cost' THEN '3 Variable Cost'
+          WHEN 'OPEX' THEN '4 OPEX'
+          WHEN 'Depreciation' THEN '4 Depreciation'
+          WHEN 'Minority Interest' THEN '5 Minority Interest'
+          WHEN 'Tax' THEN '6 Tax'
+          WHEN 'Finance Income (cost)' THEN '7 Finance Income (cost)'
+          WHEN 'Other Income (exp)' THEN '8 Other Income (exp)'
+          END ;;
+    label: "Breakdown"
+    html: {{ value | remove_first: "1 " | remove_first: "2 " | remove_first: "3 " | remove_first: "4 " | remove_first: "5 " | remove_first: "6 " | remove_first: "7 " | remove_first: "8 " }} ;;
+  }
+
   dimension: ttm {
     type: number
     sql: ${TABLE}.TTM ;;
@@ -28,15 +45,13 @@ view: t12 {
   measure: total_ttm {
     type: sum
     sql: ${ttm} ;;
+    html: {{total_ttm_M}} ;;
   }
 
-  measure: average_ttm {
-    type: average
+  measure: total_ttm_M {
+    type: sum
     sql: ${ttm} ;;
+    value_format: "#.0,, M"
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }
