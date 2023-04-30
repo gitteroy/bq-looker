@@ -29,7 +29,7 @@ view: t1 {
   dimension: group_name_coloured {
     type: string
     sql: ${TABLE}.Group_Name ;;
-    html: <p style="color: black; background-color: #afafaf; font-size:100%; text-align:center">{{ rendered_value }}</p> ;;
+    html: <p style="color: black; background-color: #D3D3D3; font-size:100%; text-align:center">{{ rendered_value }}</p> ;;
   }
 
   dimension: stream {
