@@ -45,13 +45,12 @@ view: t12 {
   measure: total_ttm {
     type: sum
     sql: ${ttm} ;;
-    html: {{total_ttm_M}} ;;
   }
 
-  measure: total_ttm_M {
-    type: sum
-    sql: ${ttm} ;;
-    value_format: "#.0,, M"
-  }
+  # measure: total_ttm_M {
+  #   type: sum
+  #   sql: ${ttm} ;;
+  #   value_format: "#.0,, M"
+  # }
 
 }
